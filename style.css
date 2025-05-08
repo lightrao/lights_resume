@@ -222,3 +222,165 @@ footer {
         padding: 15px;
     }
 }
+/* Print-specific styles */
+@media print {
+    @page {
+        size: A4;
+        margin: 1cm 1.2cm; /* Reduced margins for A4 */
+    }
+
+    body {
+        font-family: 'Roboto', sans-serif;
+        background-color: #fff !important;
+        color: #000 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        font-size: 9.5pt; /* Base font size for print */
+        line-height: 1.35; /* Slightly tighter line height */
+    }
+
+    .container {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        border-top: none !important;
+    }
+
+    header, section {
+        border-bottom: none !important;
+        page-break-inside: avoid;
+        margin-bottom: 15px; /* Reduced bottom margin for sections */
+        padding-bottom: 5px; /* Reduced bottom padding for sections */
+    }
+    
+    header {
+        margin-bottom: 20px; /* Slightly more margin for header */
+        text-align: left; /* Align header text to left for a more traditional resume feel */
+    }
+
+    header h1 {
+        font-size: 18pt !important; /* Slightly reduced */
+        color: #000 !important;
+        margin-bottom: 5px;
+    }
+
+    header p { /* Subtitle */
+        font-size: 10pt !important;
+        color: #000 !important;
+        margin-bottom: 8px;
+    }
+    
+    .contact-info p {
+        font-size: 9pt !important;
+        color: #000 !important;
+        margin: 2px 0; /* Tighter contact info */
+    }
+
+    .contact-info a {
+        color: #000 !important;
+        text-decoration: none !important;
+    }
+    .contact-info a::after {
+        content: " [" attr(href) "]"; /* Show URL next to link text, slightly different style */
+        font-size: 8.5pt;
+        color: #333; /* Slightly muted URL */
+    }
+
+    section h2 {
+        font-size: 13pt !important; /* Slightly reduced */
+        color: #000 !important;
+        padding-bottom: 3px; /* Reduced padding */
+        margin-top: 0; /* Remove top margin for section titles */
+        margin-bottom: 8px; /* Reduced margin */
+        border-bottom: 0.75pt solid #888 !important; /* Thinner, slightly darker border */
+        font-weight: 700; /* Bolder section titles */
+    }
+
+    .summary p,
+    .experience ul li,
+    .projects-highlights ul li,
+    .education p,
+    .certifications ul li,
+    .languages ul li,
+    .skills-grid ul li {
+        font-size: 9.5pt !important; /* Consistent with body */
+        color: #000 !important;
+        line-height: 1.35;
+        margin-bottom: 4px; /* Tighter list item spacing */
+    }
+    
+    .experience p, .education p {
+        margin-bottom: 3px; /* Tighter paragraph spacing in experience/education */
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr) !important; /* Attempt two columns for skills */
+        gap: 0 15px !important; /* Horizontal gap, no vertical */
+        margin-top: 5px;
+    }
+
+    .skills-grid > div {
+        background-color: #fff !important;
+        border-left: none !important;
+        padding: 0; /* Remove padding for skill divs */
+        margin-bottom: 8px; /* Space between skill categories if they wrap */
+    }
+    
+    .skills-grid h3 {
+        font-size: 10pt !important; /* Slightly reduced */
+        margin-bottom: 4px; /* Tighter margin */
+        font-weight: 700;
+    }
+    
+    .skills-grid ul {
+        margin-top: 2px;
+    }
+
+    .skills-grid ul li {
+        padding-left: 12px; /* Adjust for smaller bullet */
+        margin-bottom: 3px; /* Very tight skill list items */
+    }
+    
+    .skills-grid ul li::before {
+        content: '•';
+        font-size: 10pt; /* Smaller bullet */
+        left: 2px; /* Adjust bullet position */
+    }
+
+    ul li { /* General lists */
+        padding-left: 15px; /* Adjust for smaller bullet */
+        margin-bottom: 5px; /* Tighter general list items */
+    }
+
+    ul li::before { /* General list bullets */
+        color: #000 !important;
+        font-size: 10pt; /* Smaller bullet */
+        left: 2px; /* Adjust bullet position */
+    }
+    
+    .projects-highlights ul li strong {
+        font-weight: 700; /* Ensure strong is bold */
+        color: #000 !important;
+    }
+
+    footer {
+        display: none !important; /* Hide footer in print */
+    }
+
+    /* Avoid breaking elements across pages where possible */
+    h1, h2, h3, h4, h5, h6 {
+        page-break-after: avoid;
+    }
+    ul, ol, blockquote {
+        page-break-inside: avoid;
+    }
+    .experience > div, .education > div, .projects-highlights > ul > li {
+        page-break-inside: avoid;
+    }
+}
